@@ -5,4 +5,5 @@ func _ready():
 	$AnimatedSprite2D.play(mob_types[randi() % mob_types.size()])
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	# 安全删除对象
 	queue_free()

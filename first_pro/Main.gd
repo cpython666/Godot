@@ -4,7 +4,7 @@ extends Node
 var score
 
 func _ready():
-	print(111)
+	pass
 
 func game_over():
 	$Music.stop()
@@ -30,30 +30,21 @@ func _on_score_timer_timeout():
 func _on_start_timer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
-	print(2)
-	
 
 func _on_mod_timer_timeout():
-	# Create a new instance of the Mob scene.
+	# 创建一个敌人实例
 	var mob = mob_scene.instantiate()
-
-	# Choose a random location on Path2D.
+	# 从Path2D上随机选取一个点对象，randf()返回一个浮点数0.0-1.0，progress_ratio为路径偏移量，长度乘百分比
 	var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+	# 设置随机位置
 	mob_spawn_location.progress_ratio = randf()
-
-	# Set the mob's direction perpendicular to the path direction.
-	var direction = mob_spawn_location.rotation + PI / 2
-
-	# Set the mob's position to a random location.
 	mob.position = mob_spawn_location.position
-
-	# Add some randomness to the direction.
+	# 设置敌人的随机运动方向。即垂直于边框，再加上一点随机
+	var direction = mob_spawn_location.rotation + PI / 2
 	direction += randf_range(-PI / 4, PI / 4)
 	mob.rotation = direction
-
-	# Choose the velocity for the mob.
+	# 设置敌人速度
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
-
-	# Spawn the mob by adding it to the Main scene.
+	# 添加敌人对象到主场景
 	add_child(mob)

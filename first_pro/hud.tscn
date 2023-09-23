@@ -1,31 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdxencqypwyom"]
+[gd_scene load_steps=3 format=3 uid="uid://dj3q4sv0wuxtd"]
 
-[ext_resource type="FontFile" uid="uid://6c2o8hdj5hla" path="res://fonts/Xolonium-Regular.ttf" id="1_ffbcv"]
-[ext_resource type="Script" path="res://hud.gd" id="1_p62pc"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_y1lrt"]
-device = -1
-keycode = 4194309
-
-[sub_resource type="Shortcut" id="Shortcut_jr8xv"]
-events = [SubResource("InputEventKey_y1lrt")]
+[ext_resource type="Script" path="res://hud.gd" id="1_jnsa8"]
+[ext_resource type="FontFile" uid="uid://6c2o8hdj5hla" path="res://fonts/Xolonium-Regular.ttf" id="1_qmlbj"]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_p62pc")
+script = ExtResource("1_jnsa8")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -67.5
-offset_right = 67.5
-offset_bottom = 81.0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 64.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_ffbcv")
-theme_override_font_sizes/font_size = 64
+theme_override_fonts/font = ExtResource("1_qmlbj")
+theme_override_font_sizes/font_size = 50
 text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Message" type="Label" parent="."]
 anchors_preset = 8
@@ -33,18 +24,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = -44.0
-offset_right = 240.0
-offset_bottom = 44.0
+offset_left = -125.0
+offset_top = -35.0
+offset_right = 125.0
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_ffbcv")
-theme_override_font_sizes/font_size = 64
-text = "躲避坏蛋！"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+theme_override_fonts/font = ExtResource("1_qmlbj")
+theme_override_font_sizes/font_size = 50
+text = "躲避敌人！"
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
@@ -52,20 +40,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = -140.0
-offset_right = 240.0
-offset_bottom = -40.0
+offset_left = -118.5
+offset_top = -77.0
+offset_right = 118.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_ffbcv")
-theme_override_font_sizes/font_size = 64
-shortcut = SubResource("Shortcut_jr8xv")
-text = "开始游戏"
+theme_override_font_sizes/font_size = 50
+text = "开始游戏~"
 
 [node name="MessageTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]

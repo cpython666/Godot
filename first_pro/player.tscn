@@ -1,19 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7e72muilwmpl"]
+[gd_scene load_steps=8 format=3 uid="uid://fkwpi8jewu3x"]
 
-[ext_resource type="Texture2D" uid="uid://bx83qbinh858q" path="res://art/playerGrey_up1.png" id="1_2d3it"]
-[ext_resource type="Script" path="res://player.gd" id="1_2dehr"]
-[ext_resource type="Texture2D" uid="uid://c2bjdq7jx1qm0" path="res://art/playerGrey_up2.png" id="2_boak5"]
-[ext_resource type="Texture2D" uid="uid://4iy1g0vqhs8m" path="res://art/playerGrey_walk1.png" id="3_sy3oa"]
-[ext_resource type="Texture2D" uid="uid://cadvhcb07hk6q" path="res://art/playerGrey_walk2.png" id="4_i1jj6"]
+[ext_resource type="Script" path="res://Player.gd" id="1_2mx5a"]
+[ext_resource type="Texture2D" uid="uid://bx83qbinh858q" path="res://art/playerGrey_up1.png" id="2_fbnmo"]
+[ext_resource type="Texture2D" uid="uid://c2bjdq7jx1qm0" path="res://art/playerGrey_up2.png" id="3_0233t"]
+[ext_resource type="Texture2D" uid="uid://4iy1g0vqhs8m" path="res://art/playerGrey_walk1.png" id="4_qv1hp"]
+[ext_resource type="Texture2D" uid="uid://cadvhcb07hk6q" path="res://art/playerGrey_walk2.png" id="5_fw5jj"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7si7e"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_co6qv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_2d3it")
+"texture": ExtResource("2_fbnmo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_boak5")
+"texture": ExtResource("3_0233t")
 }],
 "loop": true,
 "name": &"up",
@@ -21,34 +21,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sy3oa")
+"texture": ExtResource("4_qv1hp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_i1jj6")
+"texture": ExtResource("5_fw5jj")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3shg"]
-radius = 54.0
-height = 136.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2a6gd"]
+radius = 26.0
+height = 64.0
 
 [node name="Player" type="Area2D"]
-position = Vector2(127, 97)
-script = ExtResource("1_2dehr")
-metadata/_edit_group_ = true
+script = ExtResource("1_2mx5a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, 1)
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_7si7e")
+sprite_frames = SubResource("SpriteFrames_co6qv")
 animation = &"up"
+frame_progress = 0.610914
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 1)
-scale = Vector2(0.5, 0.5)
-shape = SubResource("CapsuleShape2D_p3shg")
+shape = SubResource("CapsuleShape2D_2a6gd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
